@@ -45,7 +45,7 @@ class HuggingFaceServer:
         top_k_per_token: int = raw_request["top_k_per_token"]
         del raw_request["top_k_per_token"]
         if len(raw_request["stop_sequences"]) > 0:
-            stop_sequence_ids = self.tokenizer(raw_request["stop_sequences"])
+            stop_sequence_ids = self.tokenizer(raw_request["stop_sequences"], add_special_tokens=False)
             # Total number of stop words should be 1.
             assert len(stop_sequence_ids.input_ids) == 1
             # Total number of tokens in each stop word should be 1.

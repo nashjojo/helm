@@ -296,7 +296,7 @@ def get_generation_adapter_spec(
         return prefix
 
     if stop_sequences is None:
-        stop_sequences = ["</s>"]
+        stop_sequences = ["\n"]
 
     return AdapterSpec(
         method=ADAPT_GENERATION,
