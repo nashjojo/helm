@@ -51,7 +51,7 @@ class HuggingFaceServer:
             # Total number of tokens in each stop word should be 1.
             assert len(stop_sequence_ids.input_ids[0]) > 0, "len(stop_sequence_ids.input_ids[0]) == 0"
             del raw_request["stop_sequences"]
-            raw_request["eos_token_id"] = stop_sequence_ids.input_ids[0][-1]
+            raw_request["eos_token_id"] = [self.tokenizer.eos_token_id, stop_sequence_ids.input_ids[0][-1]]
 
         # Strip out irrelevant parameters
         relevant_raw_request = {

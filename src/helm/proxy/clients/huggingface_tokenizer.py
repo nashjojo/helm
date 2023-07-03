@@ -21,7 +21,7 @@ class HuggingFaceTokenizers:
 
         def load_tokenizer(hf_tokenizer_name: str, revision: Optional[str] = None):
             """Loads tokenizer using files from disk if they exist. Otherwise, downloads from HuggingFace."""
-            tokenizer_kwargs = {}
+            tokenizer_kwargs = {"trust_remote_code": True}
             if revision is not None:
                 tokenizer_kwargs["revision"] = revision
             try:
